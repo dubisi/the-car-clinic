@@ -2,16 +2,16 @@ package za.co.thecarclinic.app.modal.bookings;
 
 public class RequestService {
 
-    private String email;
+    private String carReg;
     private String description;
     // private LocalDate localDate;
 
-    public String getEmail() {
-        return email;
+    public String getCarReg() {
+        return carReg;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCarReg(String carReg) {
+        this.carReg = carReg;
     }
 
     public String getDescription() {

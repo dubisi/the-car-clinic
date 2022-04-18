@@ -2,16 +2,15 @@ package za.co.thecarclinic.app.modal.bookings;
 
 public class RespondBooking {
 
-    private String email;
+    private String carReg;
     private String status;
     
-
-    public String getEmail() {
-        return email;
+    public String getCarReg() {
+        return carReg;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCarReg(String carReg) {
+        this.carReg = carReg;
     }
     public String getStatus() {
         return status;
