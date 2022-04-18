@@ -31,7 +31,7 @@ public class Persist implements CRUD {
             statement.setString(2, register.getSurname());
             statement.setString(3, register.getNumber());
             statement.setString(4, register.getEmail());
-            statement.setString(5,register.getLocation())
+            statement.setString(5,register.getLocation());
             statement.setString(6, register.getPassword());
             int result = statement.executeUpdate();
             System.out.println(result);
@@ -181,7 +181,6 @@ public class Persist implements CRUD {
                 carRegister.setModel(results.getString("model"));
                 carRegister.setYear(results.getString("year"));
                 carRegister.setCarReg(results.getString("carreg"));
-                carRegister.setLocation(results.getString("location"));
                 carRegister.setVinNumber(results.getString("vinnumber"));
                 cars.add(carRegister);
 
