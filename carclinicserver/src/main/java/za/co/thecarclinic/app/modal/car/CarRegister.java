@@ -17,11 +17,6 @@ public class CarRegister {
         this.email = email;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-
     public String getBrand() {
         return brand;
     }
