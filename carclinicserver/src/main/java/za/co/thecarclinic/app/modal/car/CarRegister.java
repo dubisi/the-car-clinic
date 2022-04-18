@@ -7,7 +7,6 @@ public class CarRegister {
     private String year;
     private String vinNumber;
     private String carReg;
-    private String location;
     private String email;
 
     public String getEmail() {
@@ -16,10 +15,6 @@ public class CarRegister {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getLocation() {
-        return location;
     }
 
     public void setLocation(String location) {

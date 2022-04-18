@@ -5,6 +5,7 @@ public class Register {
     private String surname;
     private String number;
     private String email;
+    private String location;
     private String password;
 
     public String getName() {
@@ -37,6 +38,14 @@ public class Register {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void setLocation(String location) {
+        this.location = location
+    }
+
+    public String getLocation() {
+        return location;
     }
 
     public String getPassword() {

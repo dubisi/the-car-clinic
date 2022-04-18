@@ -23,15 +23,16 @@ public class Persist implements CRUD {
     @Override
     public void signUp(Register register) {
 
-        String prepState = "INSERT INTO customers(name,surname,number,email," +
-                "password) values(?,?,?,?,?)";
+        String prepState = "INSERT INTO customers(name,surname,number,email,location" +
+                "password) values(?,?,?,?,?,?)";
         try (PreparedStatement statement =
                      dbConection.getConnection().prepareStatement(prepState)) {
             statement.setString(1, register.getName());
             statement.setString(2, register.getSurname());
             statement.setString(3, register.getNumber());
             statement.setString(4, register.getEmail());
-            statement.setString(5, register.getPassword());
+            statement.setString(5,register.getLocation())
+            statement.setString(6, register.getPassword());
             int result = statement.executeUpdate();
             System.out.println(result);
 
@@ -60,7 +61,7 @@ public class Persist implements CRUD {
 
         System.out.println(customerID);
         String prepState = "INSERT INTO car(brand,year,model,vinnumber," +
-                "carreg,location,customersID) values(?,?,?,?,?,?,?)";
+                "carreg,customersID) values(?,?,?,?,?,?)";
         try (PreparedStatement statement =
                      dbConection.getConnection().prepareStatement(prepState)) {
             statement.setString(1, carRegister.getBrand());
@@ -68,8 +69,7 @@ public class Persist implements CRUD {
             statement.setString(3, carRegister.getModel());
             statement.setString(4, carRegister.getVinNumber());
             statement.setString(5, carRegister.getCarReg());
-            statement.setString(6, carRegister.getLocation());
-            statement.setString(7, customerID);
+            statement.setString(6, customerID);
             int result = statement.executeUpdate();
             System.out.println(result);
             if (result == 1) {

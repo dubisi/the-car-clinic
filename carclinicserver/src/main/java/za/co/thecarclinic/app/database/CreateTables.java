@@ -29,8 +29,8 @@ public class CreateTables implements Tables {
 
         String prepState = "CREATE TABLE IF NOT EXISTS 'car' ('carID' INTEGER" +
                 " PRIMARY KEY,'brand' NOT NULL,'year' NOT NULL,'model' NOT " +
-                "NULL,'vinnumber' NOT NULL,'carreg' NOT NULL,'location' NOT " +
-                "NULL,'customersID' INTEGER NOT NULL,FOREIGN KEY " +
+                "NULL,'vinnumber' NOT NULL,'carreg' NOT NULL," +
+                "'customersID' INTEGER NOT NULL,FOREIGN KEY " +
                 "(customersID) REFERENCES customers(customerID) ON DELETE " +
                 "CASCADE)";
         try (PreparedStatement statement =
@@ -100,7 +100,7 @@ public class CreateTables implements Tables {
 
         String prepState = "CREATE TABLE IF NOT EXISTS 'admin' ('adminID' " +
                 "INTEGER PRIMARY KEY,'name' NOT NULL,'surname' NOT NULL," +
-                "'number' NOT NULL,'email' NOT NULL,'password' NOT NULL)";
+                "'number' NOT NULL,'email' NOT NULL,'location' NOT NULL,'password' NOT NULL)";
         try (PreparedStatement statement =
                      connection.getConnection().prepareStatement(prepState)) {
             statement.execute();
