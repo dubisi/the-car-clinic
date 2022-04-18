@@ -12,7 +12,7 @@ public class CreateTables implements Tables {
 
         String prepState = "CREATE TABLE IF NOT EXISTS 'customers' " +
                 "('customerID' INTEGER PRIMARY KEY,'name' NOT NULL,'surname' " +
-                "NOT NULL,'number' NOT NULL,'email' NOT NULL UNIQUE," +
+                "NOT NULL,'number' NOT NULL,'email' NOT NULL UNIQUE,'location' NOT NULL," +
                 "'password' NOT NULL)";
         try (PreparedStatement statement =
                      connection.getConnection().prepareStatement(prepState)) {
@@ -100,7 +100,7 @@ public class CreateTables implements Tables {
 
         String prepState = "CREATE TABLE IF NOT EXISTS 'admin' ('adminID' " +
                 "INTEGER PRIMARY KEY,'name' NOT NULL,'surname' NOT NULL," +
-                "'number' NOT NULL,'email' NOT NULL,'location' NOT NULL,'password' NOT NULL)";
+                "'number' NOT NULL,'email' NOT NULL,'password' NOT NULL)";
         try (PreparedStatement statement =
                      connection.getConnection().prepareStatement(prepState)) {
             statement.execute();
