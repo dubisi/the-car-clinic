@@ -49,9 +49,9 @@ public class CreateTables implements Tables {
         String prepState = "CREATE TABLE IF NOT EXISTS 'bookings' " +
                 "('requestID' INTEGER PRIMARY KEY NOT NULL,'name' NOT NULL," +
                 "'surname' NOT NULL,'description' NOT NULL," +
-                "'status' NOT NULL,'price' NOT NULL, 'customersCarID' INTEGER,'carID' INTEGER, " +
-                "FOREIGN KEY (customersCarID) REFERENCES customers(customerID)," +
-                "FOREIGN KEY (carID) REFERENCES car(carID))";
+                "'status' NOT NULL,'price' NOT NULL, 'customersID' INTEGER,'carsID' INTEGER, " +
+                "FOREIGN KEY (customersID) REFERENCES customers(customerID)," +
+                "FOREIGN KEY (carsID) REFERENCES car(carID))";
         try (PreparedStatement statement =
                      connection.getConnection().prepareStatement(prepState)) {
             statement.execute();
@@ -67,8 +67,8 @@ public class CreateTables implements Tables {
 
         String prepState = "CREATE TABLE IF NOT EXISTS 'quotes' ('quoteID' " +
                 "INTEGER PRIMARY KEY,'description' NOT NULL,'price'," +
-                "'details','customersCarID' INTEGER,'status' INTEGER NOT NULL" +
-                ",FOREIGN KEY (customersCarID) REFERENCES customers" +
+                "'details','customerCarID' INTEGER,'status' INTEGER NOT NULL" +
+                ",FOREIGN KEY (customerCarID) REFERENCES customers" +
                 "(customerID))";
         try (PreparedStatement statement =
                      connection.getConnection().prepareStatement(prepState)) {
