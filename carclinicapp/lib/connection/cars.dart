@@ -19,8 +19,13 @@ class Http {
     }
   }
 
-  Future<bool> addCars(String brand, String model, vinNumber, year, carRegister,
-      location, email) async {
+  Future<bool> addCars(
+      {required String brand,
+      required String model,
+      required String vinNumber,
+      required String year,
+      required String carRegistration,
+      required String email}) async {
     final response = await http.post(Uri.parse("http://localhost:7000/car"),
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',
@@ -30,8 +35,7 @@ class Http {
           "model": model,
           "vinNumber": vinNumber,
           "year": year,
-          "carReg": carRegister,
-          "location": location,
+          "carReg": carRegistration,
           "email": email
         }));
 

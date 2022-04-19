@@ -19,14 +19,14 @@ class _RegisterCarState extends State<RegisterCar> {
   TextEditingController vinNumberController = TextEditingController();
   TextEditingController carRegController = TextEditingController();
   TextEditingController locationController = TextEditingController();
-  String? email = "";
+  String userEmail = "";
 
   @override
   Widget build(BuildContext context) {
     final Cars cars = Provider.of<Cars>(context, listen: false);
 
-    email = context.watch<Auth>().getEmail();
-    print('car ' + email!);
+    userEmail = context.watch<Auth>().getEmail();
+    print('car ' + userEmail);
     return Scaffold(
         appBar: AppBar(
             leading: IconButton(
@@ -111,13 +111,13 @@ class _RegisterCarState extends State<RegisterCar> {
                               Provider.of<CarRegister>(context, listen: false);
                           if (_formKey.currentState!.validate()) {
                             Future<bool> exist = carRegister.addCar(
-                                brandController.text,
-                                modelController.text,
-                                yearController.text,
-                                vinNumberController.text,
-                                carRegController.text,
-                                locationController.text,
-                                email);
+                              brand: brandController.text,
+                              model: modelController.text,
+                              year: yearController.text,
+                              vinNumber: vinNumberController.text,
+                              carRegistration: carRegController.text,
+                              email: userEmail,
+                            );
                             if (await exist) {
                               Navigator.pushReplacementNamed(
                                   context, "/profile");

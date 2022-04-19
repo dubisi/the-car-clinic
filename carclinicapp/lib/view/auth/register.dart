@@ -19,6 +19,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
   TextEditingController surnameController = TextEditingController();
   TextEditingController numberController = TextEditingController();
   TextEditingController emailController = TextEditingController();
+  TextEditingController locationController = TextEditingController();
   TextEditingController password1Controller = TextEditingController();
   TextEditingController password2Controller = TextEditingController();
 
@@ -88,7 +89,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                   child: _buildTextField(
                       labelText: 'location',
                       validateMessage: 'Please enter your location',
-                      textController: emailController)),
+                      textController: locationController)),
             ),
             const SizedBox(
               height: 15,
@@ -122,11 +123,12 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                       Provider.of<Register>(context, listen: false);
                   if (_formKey.currentState!.validate()) {
                     Future<bool> exist = register.register(
-                        nameController.text,
-                        surnameController.text,
-                        numberController.text,
-                        emailController.text,
-                        password1Controller.text);
+                        name: nameController.text,
+                        surname: surnameController.text,
+                        number: numberController.text,
+                        email: emailController.text,
+                        pwd: password1Controller.text,
+                        location: locationController.text);
                     if (await exist) {
                       Navigator.pushNamed(context, "/");
                     } else {

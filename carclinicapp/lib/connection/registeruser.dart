@@ -6,7 +6,13 @@ import 'package:http/http.dart' as http;
 class Http {
   late int id = 1;
 
-  Future<bool> register(name, surname, number, email, pwd) async {
+  Future<bool> register(
+      {required String name,
+      required String surname,
+      required String number,
+      required String email,
+      required String location,
+      required String pwd}) async {
     final response = await http.post(
       Uri.parse("http://localhost:7000/register"),
       headers: {
@@ -17,6 +23,7 @@ class Http {
         "surname": surname,
         "number": number,
         "email": email,
+        "location": location,
         "password": pwd
       }),
     );
