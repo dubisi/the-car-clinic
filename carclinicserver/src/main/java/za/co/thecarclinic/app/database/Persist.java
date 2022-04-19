@@ -98,7 +98,7 @@ public class Persist implements CRUD {
 
         System.out.println(carID);
         String prepState = "INSERT INTO quotes(description,status," +
-                "customersCarID) values(?,?,?)";
+                "customerCarID) values(?,?,?)";
         try (PreparedStatement statement = dbConection.getConnection().prepareStatement(prepState)) {
             statement.setString(1, requestService.getDescription());
             statement.setString(2, "pending");
@@ -139,7 +139,7 @@ public class Persist implements CRUD {
         }
 
         String prepState = "INSERT INTO bookings('name','surname'," +
-                "'description','status','price','customersCarID','carID') " +
+                "'description','status','price','customersID','carsID') " +
                 "values(?,?,?,?,?,?,?)";
         try (PreparedStatement statement1 = dbConection.getConnection().prepareStatement(prepState)) {
             statement1.setString(1, name);
@@ -189,7 +189,7 @@ public class Persist implements CRUD {
     @Override
     public ArrayList<Retrieve> getBookings(String email) {
         String carSql = "SELECT * FROM customers,bookings,car WHERE email = ?" +
-                " AND customerID == customersID";
+                " AND carID = carsID";
 
         try (PreparedStatement statement = dbConection.getConnection().prepareStatement(carSql)) {
             statement.setString(1, email);
@@ -221,7 +221,7 @@ public class Persist implements CRUD {
     @Override
     public ArrayList<Retrieve> getQuotes(String email) {
         String carSql = "SELECT * FROM quotes,car,customers WHERE email = ? " +
-                "AND customerID == customersCarID";
+                "AND carID = customerCarID";
 
         try (PreparedStatement statement = dbConection.getConnection().prepareStatement(carSql)) {
             statement.setString(1, email);
@@ -269,7 +269,7 @@ public class Persist implements CRUD {
             e.printStackTrace();
         }
 
-        String carSql = "UPDATE bookings SET status = ? WHERE carID " +
+        String carSql = "UPDATE bookings SET status = ? WHERE carsID " +
                 "= ?";
 
         try (PreparedStatement statement = dbConection.getConnection().prepareStatement(carSql)) {
@@ -302,7 +302,7 @@ public class Persist implements CRUD {
             e.printStackTrace();
         }
         String carSql = "UPDATE quotes SET status = ?,price = ?,details = ? " +
-                "WHERE customersCarID = ?";
+                "WHERE customerCarID = ?";
 
         try (PreparedStatement statement = dbConection.getConnection().prepareStatement(carSql)) {
             statement.setString(1, respondQuote.getStatus());
@@ -349,7 +349,7 @@ public class Persist implements CRUD {
         String prepState = "INSERT INTO dates('date') values(?)";
 
         try (PreparedStatement statement1 = dbConection.getConnection().prepareStatement(prepState)) {
-            statement1.setString(1, date.getDate());
+            statement1.setString(1, date.getDate().toString());
 
             int result = statement1.executeUpdate();
             System.out.println(result);

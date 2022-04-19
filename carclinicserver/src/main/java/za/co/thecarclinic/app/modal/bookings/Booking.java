@@ -1,5 +1,6 @@
 package za.co.thecarclinic.app.modal.bookings;
 
+import java.time.LocalDate;
 
 public class Booking {
 
@@ -7,7 +8,7 @@ public class Booking {
     private String description;
     private String carReg;
     private String price;
-    private String localDate;
+    private LocalDate localDate;
 
     public String getEmail() {
         return email;
@@ -41,11 +42,11 @@ public class Booking {
         this.price = price;
     }
 
-    public String getLocalDate() {
+    public LocalDate getLocalDate() {
         return localDate;
     }
 
     public void setLocalDate(String localDate) {
-        this.localDate = localDate;
+        this.localDate = LocalDate.parse(localDate);
     }
 }
