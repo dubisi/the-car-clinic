@@ -5,10 +5,14 @@ import '../connection/book.dart';
 class Book extends ChangeNotifier {
   String email = "";
 
-  Future<void> book(email, service, price, date, car) async {
+  Future<void> book(
+      {required String carReg,
+      required String service,
+      required String price,
+      required String date}) async {
     Http http = Http();
 
-    http.book(email, service, date, price, car);
+    http.book(carReg: carReg, service: service, date: date, price: price);
   }
 
   Future<List> getBookings(String email) async {

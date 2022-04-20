@@ -4,25 +4,23 @@ import 'package:flutter/foundation.dart';
 import '../connection/date.dart';
 
 class Dates with ChangeNotifier, DiagnosticableTreeMixin {
-  String _email = "";
   String _service = "";
   String _price = "";
-  String _car = "";
-
+  String _carReg = "";
 
   String? get service => _service;
 
-  String? get email => _email;
-
   String? get labour => _price;
 
-  String? get car => _car;
+  String? get carReg => _carReg;
 
-  init(email, service, price, car) {
-    _email = email;
+  init(
+      {required String service,
+      required String price,
+      required String carReg}) {
     _service = service;
     _price = price;
-    _car = car;
+    _carReg = carReg;
     notifyListeners();
   }
 
@@ -37,7 +35,6 @@ class Dates with ChangeNotifier, DiagnosticableTreeMixin {
     super.debugFillProperties(properties);
     properties.add(StringProperty('service', service));
     properties.add(StringProperty('labourPrice', labour));
-    properties.add(StringProperty('car', car));
-    properties.add(StringProperty('email', email));
+    properties.add(StringProperty('carReg', carReg));
   }
 }

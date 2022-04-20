@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 
 class Services with ChangeNotifier, DiagnosticableTreeMixin {
@@ -18,6 +17,7 @@ class Services with ChangeNotifier, DiagnosticableTreeMixin {
   String _labourPrice = "-";
 
   String get labour => _labourPrice;
+  String get labourr => _labourPrice;
   String get service => _service;
   String get parts => _parts;
   String get partsPrice => _partPrice;

@@ -19,7 +19,7 @@ class _BookFormState extends State<BookForm> {
   List<String> carList = ["Select Car"];
   String? value = "Select Car";
 
-  String value1 = "";
+  String service = "";
 
   List<S2Choice<String>> options = [
     S2Choice<String>(
@@ -88,10 +88,10 @@ class _BookFormState extends State<BookForm> {
                     choiceLayout: S2ChoiceLayout.grid,
                     modalConfirm: true,
                     title: 'Services',
-                    value: value1,
+                    value: service,
                     choiceItems: options,
                     onChange: (state) => {
-                          value1 = context
+                          service = context
                               .read<Services>()
                               .serviceGenerate(state.valueDisplay)
                         }),
@@ -101,7 +101,7 @@ class _BookFormState extends State<BookForm> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
-                        // context.read<Services>().serviceGenerate(value1),
+                        // context.read<Services>().serviceGenerate(service),
                         const Text('Cost Summary'),
                         ListTile(
                           leading: const Text("Labour Charge"),
@@ -128,7 +128,10 @@ class _BookFormState extends State<BookForm> {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(content: Text('Processing Data')),
                         );
-                        dates.init(email, value1, "900", value!.split(" ")[0]);
+                        dates.init(
+                            service: service,
+                            price: context.watch<Services>().labour,
+                            carReg: value!.split(" ")[4]);
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -154,7 +157,9 @@ List<String> convert(List<dynamic> content) {
         " " +
         content[i]["model"] +
         " " +
-        content[i]["year"]);
+        content[i]["year"] +
+        " " +
+        content[i]["carReg"]);
   }
   return carsName;
 }

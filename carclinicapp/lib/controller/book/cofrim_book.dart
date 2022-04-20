@@ -17,22 +17,21 @@ class CofirmBook extends StatefulWidget {
 class _CorfirmBookState extends State<CofirmBook> {
   late Future<List> myFuture;
   List<String> datesList = ["Select date"];
-  String? date = "Select Date";
-
-  String? email;
-  String? service;
-  String? labour;
-  String? car;
+  String date = "Select Date";
+  String service = '';
+  String labour = '';
+  String carReg = '';
 
   final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    email = context.watch<Dates>().email;
-    service = context.watch<Dates>().service;
-    labour = context.watch<Dates>().labour;
-    car = context.watch<Dates>().car;
-    print('jhfkhf ${email}');
+    service = context.watch<Dates>().service!;
+    labour = context.watch<Dates>().labour!;
+    carReg = context.watch<Dates>().carReg!;
+
+    print("bjgjgj"+service);
+
     final Dates dates = Provider.of<Dates>(context, listen: false);
     myFuture = dates.getAvailableDates();
     return FutureBuilder(
@@ -71,8 +70,8 @@ class _CorfirmBookState extends State<CofirmBook> {
                         isExpanded: true,
                         items: datesList.map(buildMenuItem).toList(),
                         onChanged: (value) => setState(() {
-                              date = value;
-                              dates.init(email, service, labour, car);
+                              date = value!;
+                              // dates.init(email, service, labour, carReg);
                             }),
                         validator: (value) {
                           if (value == "Select date" || value!.isEmpty) {
@@ -111,7 +110,11 @@ class _CorfirmBookState extends State<CofirmBook> {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(content: Text('Processing Data')),
                         );
-                        bookService.book(email, service, labour, date, car);
+                        bookService.book(
+                            carReg: carReg,
+                            service: service,
+                            price: labour,
+                            date: date);
                         Navigator.pushReplacementNamed(context, "/orders");
                       }
                     },

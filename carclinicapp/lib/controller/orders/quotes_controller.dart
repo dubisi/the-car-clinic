@@ -107,7 +107,7 @@ class _QuotesControllerState extends State<QuotesController> {
                   onPressed: () {
                     final Dates dates =
                         Provider.of<Dates>(context, listen: false);
-                    dates.init(email, details, price, car);
+                    dates.init(service: details, price: price, carReg: car);
                     Navigator.push(
                       context,
                       MaterialPageRoute(
