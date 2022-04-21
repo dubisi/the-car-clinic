@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 
 class Http {
   Future<bool> book({
+    required String email,
     required String carReg,
     required String service,
     required String date,
@@ -14,6 +15,7 @@ class Http {
           'Content-Type': 'application/json; charset=UTF-8',
         },
         body: jsonEncode(<String, String>{
+          "email":email,
           "carReg": carReg,
           "description": service,
           "localDate": date,

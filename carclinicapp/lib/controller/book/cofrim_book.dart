@@ -1,6 +1,5 @@
 import 'package:carclinicapp/controller/book/book_form.dart';
-import 'package:carclinicapp/controller/book/services.dart';
-import 'package:carclinicapp/view/book.dart';
+import 'package:carclinicapp/model/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -29,8 +28,9 @@ class _CorfirmBookState extends State<CofirmBook> {
     service = context.watch<Dates>().service!;
     labour = context.watch<Dates>().labour!;
     carReg = context.watch<Dates>().carReg!;
-
-    print("bjgjgj"+service);
+    String email = context.watch<Auth>().getEmail();
+    print('object' + email);
+    print("bjgjgj" + service);
 
     final Dates dates = Provider.of<Dates>(context, listen: false);
     myFuture = dates.getAvailableDates();
@@ -71,7 +71,10 @@ class _CorfirmBookState extends State<CofirmBook> {
                         items: datesList.map(buildMenuItem).toList(),
                         onChanged: (value) => setState(() {
                               date = value!;
-                              // dates.init(email, service, labour, carReg);
+                              dates.init(
+                                  service: service,
+                                  price: labour,
+                                  carReg: carReg);
                             }),
                         validator: (value) {
                           if (value == "Select date" || value!.isEmpty) {
@@ -111,6 +114,7 @@ class _CorfirmBookState extends State<CofirmBook> {
                           const SnackBar(content: Text('Processing Data')),
                         );
                         bookService.book(
+                            email: email,
                             carReg: carReg,
                             service: service,
                             price: labour,
@@ -131,7 +135,7 @@ class _CorfirmBookState extends State<CofirmBook> {
     List<String> dates = ["Select Date"];
 
     for (int i = 0; i < content.length; i++) {
-      dates.add(content[i]["date"]);
+      dates.add("2022-04-2$i");
     }
     return dates;
   }

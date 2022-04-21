@@ -7,8 +7,8 @@ class Quote extends ChangeNotifier {
   Http http = Http();
 
 
-  void createQoute({required String email, required String description}) {
-    http.createQoute(email: email, description: description);
+  void createQoute({required String carReg, required String description}) {
+    http.createQoute(carReg: carReg, description: description);
   }
 
    Future<List> getQuotes(String email) async {

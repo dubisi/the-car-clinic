@@ -20,6 +20,7 @@ class _BookFormState extends State<BookForm> {
   String? value = "Select Car";
 
   String service = "";
+  String price = "";
 
   List<S2Choice<String>> options = [
     S2Choice<String>(
@@ -35,6 +36,7 @@ class _BookFormState extends State<BookForm> {
   @override
   Widget build(BuildContext context) {
     final Cars cars = Provider.of<Cars>(context, listen: false);
+    final Services services = Provider.of<Services>(context, listen: false);
     String email = context.watch<Auth>().getEmail();
     print('object' + email);
     myFuture = cars.getcars(email);
@@ -130,8 +132,8 @@ class _BookFormState extends State<BookForm> {
                         );
                         dates.init(
                             service: service,
-                            price: context.watch<Services>().labour,
-                            carReg: value!.split(" ")[4]);
+                            price: services.labour,
+                            carReg: value!.split(" ")[3]);
                         Navigator.push(
                           context,
                           MaterialPageRoute(

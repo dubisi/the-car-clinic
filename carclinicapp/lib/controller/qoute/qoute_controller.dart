@@ -16,6 +16,7 @@ class _QouteControllerState extends State<QuoteController> {
   late Future<List> myFuture;
   List<String> carList = ["Select Car"];
   String? value = "Select Car";
+  String car = '';
 
   TextEditingController description = TextEditingController();
 
@@ -135,7 +136,7 @@ class _QouteControllerState extends State<QuoteController> {
   TextButton _buildTextButton(context, String email) {
     return TextButton(
       onPressed: () => {
-        qoute.createQoute(email: email, description: description.text),
+        qoute.createQoute(carReg: value!.split(" ")[3], description: description.text),
         Navigator.pushReplacementNamed(context, '/orders')
       },
       style: ButtonStyle(
@@ -165,7 +166,9 @@ List<String> convert(List<dynamic> content) {
         " " +
         content[i]["model"] +
         " " +
-        content[i]["year"]);
+        content[i]["year"] +
+        " " +
+        content[i]["carReg"]);
   }
   return carsName;
 }
