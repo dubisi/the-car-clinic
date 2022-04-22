@@ -2,8 +2,6 @@ package za.co.thecarclinic.controllers.home;
 
 import io.javalin.http.Context;
 
-
-
 public class HomeController {
 
     public static String HOME_PATH = "/";

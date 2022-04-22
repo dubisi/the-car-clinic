@@ -4,7 +4,7 @@ public class RespondBooking {
 
     private String carReg;
     private String status;
-    
+
     public String getCarReg() {
         return carReg;
     }
@@ -12,6 +12,7 @@ public class RespondBooking {
     public void setCarReg(String carReg) {
         this.carReg = carReg;
     }
+
     public String getStatus() {
         return status;
     }
@@ -19,5 +20,5 @@ public class RespondBooking {
     public void setStatus(String status) {
         this.status = status;
     }
-    
+
 }

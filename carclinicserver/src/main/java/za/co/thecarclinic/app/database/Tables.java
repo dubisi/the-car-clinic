@@ -34,8 +34,6 @@ public interface Tables {
      **/
     void createBookingTable();
 
-
-
     /***
      * responsible create admin table
      * for admin to manage request time to time

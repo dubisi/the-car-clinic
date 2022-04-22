@@ -139,16 +139,17 @@ public class Persist implements CRUD {
         }
 
         String prepState = "INSERT INTO bookings('name','surname'," +
-                "'description','status','price','customersID','carsID') " +
-                "values(?,?,?,?,?,?,?)";
+                "'description','status','price','date','customersID','carsID') " +
+                "values(?,?,?,?,?,?,?,?)";
         try (PreparedStatement statement1 = dbConection.getConnection().prepareStatement(prepState)) {
             statement1.setString(1, name);
             statement1.setString(2, surname);
             statement1.setString(3, booking.getDescription());
             statement1.setString(4, "pending");
             statement1.setString(5, booking.getPrice());
-            statement1.setString(6, customerID);
-            statement1.setString(7, carID);
+            statement1.setString(6, booking.getLocalDate().toString());
+            statement1.setString(7, customerID);
+            statement1.setString(8, carID);
             int result = statement1.executeUpdate();
             System.out.println(result);
 

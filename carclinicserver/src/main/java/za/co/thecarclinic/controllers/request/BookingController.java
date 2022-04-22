@@ -1,6 +1,7 @@
 package za.co.thecarclinic.controllers.request;
 
 import io.javalin.http.Context;
+
 import za.co.thecarclinic.app.database.CRUD;
 import za.co.thecarclinic.app.database.Persist;
 import za.co.thecarclinic.app.modal.bookings.Booking;
@@ -21,7 +22,7 @@ public class BookingController {
         String email = context.queryParam("email");
         crud = new Persist();
 
-       context.json(crud.getBookings(email));
+        context.json(crud.getBookings(email));
     }
 
 }

@@ -2,6 +2,7 @@ package za.co.thecarclinic.controllers.dates;
 
 import io.javalin.http.Context;
 import io.javalin.http.HttpCode;
+
 import za.co.thecarclinic.app.database.CRUD;
 import za.co.thecarclinic.app.database.Persist;
 import za.co.thecarclinic.app.modal.dates.Dates;
@@ -27,9 +28,7 @@ public class DateController {
 
         CRUD crud = new Persist();
 
-
-
-            context.json(crud.getDates());
+        context.json(crud.getDates());
 
     }
 }
