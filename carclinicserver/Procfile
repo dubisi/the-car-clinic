@@ -1,0 +1,1 @@
+web: java -jar target/carclinicserver-1.0-webserver.jar
