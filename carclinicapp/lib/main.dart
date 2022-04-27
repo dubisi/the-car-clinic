@@ -1,7 +1,6 @@
 import 'package:carclinicapp/controller/book/services.dart';
 import 'package:carclinicapp/controller/bottom_navbar/layout.dart';
 import 'package:carclinicapp/controller/profile/edit_profile.dart';
-import 'package:carclinicapp/controller/qoute/qoute_controller.dart';
 import 'package:carclinicapp/model/auth.dart';
 import 'package:carclinicapp/model/available_date.dart';
 import 'package:carclinicapp/model/book.dart';
@@ -11,7 +10,6 @@ import 'package:carclinicapp/model/qoute.dart';
 import 'package:carclinicapp/model/register.dart';
 import 'package:carclinicapp/view/auth/login.dart';
 import 'package:carclinicapp/view/book.dart';
-import 'package:carclinicapp/view/home.dart';
 import 'package:carclinicapp/view/orders.dart';
 import 'package:carclinicapp/view/profile.dart';
 import 'package:carclinicapp/view/qoute.dart';
@@ -41,7 +39,9 @@ class TheCarClinic extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(scaffoldBackgroundColor: Colors.white),
+      theme: ThemeData(
+          scaffoldBackgroundColor: Colors.white,
+          colorScheme: ThemeData().colorScheme.copyWith(primary: Colors.green)),
       title: _title,
       initialRoute: '/',
       routes: {

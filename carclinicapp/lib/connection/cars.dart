@@ -12,6 +12,7 @@ class Http {
       },
     );
 
+  
     if (response.statusCode == 302) {
       return jsonDecode(response.body);
     } else {
@@ -26,7 +27,8 @@ class Http {
       required String year,
       required String carRegistration,
       required String email}) async {
-    final response = await http.post(Uri.parse("http://localhost:7000/car"),
+    final response = await http.post(
+        Uri.parse("http://localhost:7000/car"),
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',
         },
