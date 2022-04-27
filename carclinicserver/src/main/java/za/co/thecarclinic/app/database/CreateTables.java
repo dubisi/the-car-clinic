@@ -14,8 +14,7 @@ public class CreateTables implements Tables {
                 "('customerID' INTEGER PRIMARY KEY,'name' NOT NULL,'surname' " +
                 "NOT NULL,'number' NOT NULL,'email' NOT NULL UNIQUE,'location' NOT NULL," +
                 "'password' NOT NULL)";
-        try (PreparedStatement statement =
-                     connection.getConnection().prepareStatement(prepState)) {
+        try (PreparedStatement statement = connection.getConnection().prepareStatement(prepState)) {
             statement.execute();
             System.out.println("CUSTOMERS TABLE CREATED");
         } catch (SQLException e) {
@@ -33,8 +32,7 @@ public class CreateTables implements Tables {
                 "'customersID' INTEGER NOT NULL,FOREIGN KEY " +
                 "(customersID) REFERENCES customers(customerID) ON DELETE " +
                 "CASCADE)";
-        try (PreparedStatement statement =
-                     connection.getConnection().prepareStatement(prepState)) {
+        try (PreparedStatement statement = connection.getConnection().prepareStatement(prepState)) {
             statement.execute();
             System.out.println("CARS TABLE CREATED");
         } catch (SQLException e) {
@@ -49,11 +47,10 @@ public class CreateTables implements Tables {
         String prepState = "CREATE TABLE IF NOT EXISTS 'bookings' " +
                 "('requestID' INTEGER PRIMARY KEY NOT NULL,'name' NOT NULL," +
                 "'surname' NOT NULL,'description' NOT NULL," +
-                "'status' NOT NULL,'price' NOT NULL, 'customersID' INTEGER,'carsID' INTEGER, " +
+                "'status' NOT NULL,'price' NOT NULL,'date' NOT NULL, 'customersID' INTEGER,'carsID' INTEGER, " +
                 "FOREIGN KEY (customersID) REFERENCES customers(customerID)," +
                 "FOREIGN KEY (carsID) REFERENCES car(carID))";
-        try (PreparedStatement statement =
-                     connection.getConnection().prepareStatement(prepState)) {
+        try (PreparedStatement statement = connection.getConnection().prepareStatement(prepState)) {
             statement.execute();
             System.out.println("REQUESTS TABLE CREATED");
         } catch (SQLException e) {
@@ -70,8 +67,7 @@ public class CreateTables implements Tables {
                 "'details','customerCarID' INTEGER,'status' INTEGER NOT NULL" +
                 ",FOREIGN KEY (customerCarID) REFERENCES customers" +
                 "(customerID))";
-        try (PreparedStatement statement =
-                     connection.getConnection().prepareStatement(prepState)) {
+        try (PreparedStatement statement = connection.getConnection().prepareStatement(prepState)) {
             statement.execute();
             System.out.println("QUOTES TABLE CREATED");
         } catch (SQLException e) {
@@ -85,8 +81,7 @@ public class CreateTables implements Tables {
 
         String prepState = "CREATE TABLE IF NOT EXISTS 'dates' ('datesID' " +
                 "INTEGER PRIMARY KEY,'date' NOT NULL UNIQUE)";
-        try (PreparedStatement statement =
-                     connection.getConnection().prepareStatement(prepState)) {
+        try (PreparedStatement statement = connection.getConnection().prepareStatement(prepState)) {
             statement.execute();
             System.out.println("DATES TABLE CREATED");
         } catch (SQLException e) {
@@ -101,8 +96,7 @@ public class CreateTables implements Tables {
         String prepState = "CREATE TABLE IF NOT EXISTS 'admin' ('adminID' " +
                 "INTEGER PRIMARY KEY,'name' NOT NULL,'surname' NOT NULL," +
                 "'number' NOT NULL,'email' NOT NULL,'password' NOT NULL)";
-        try (PreparedStatement statement =
-                     connection.getConnection().prepareStatement(prepState)) {
+        try (PreparedStatement statement = connection.getConnection().prepareStatement(prepState)) {
             statement.execute();
             System.out.println("ADMIN TABLE CREATED");
         } catch (SQLException e) {

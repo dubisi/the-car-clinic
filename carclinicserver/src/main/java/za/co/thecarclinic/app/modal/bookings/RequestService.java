@@ -4,8 +4,7 @@ public class RequestService {
 
     private String carReg;
     private String description;
-    // private LocalDate localDate;
-
+ 
     public String getCarReg() {
         return carReg;
     }
@@ -21,12 +20,4 @@ public class RequestService {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    // public LocalDate getLocalDate() {
-    //     return localDate;
-    // }
-
-    // public void setLocalDate(LocalDate localDate) {
-    //     this.localDate = localDate;
-    // }
 }
