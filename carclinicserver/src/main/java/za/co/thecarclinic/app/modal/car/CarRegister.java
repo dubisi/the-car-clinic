@@ -57,5 +57,4 @@ public class CarRegister {
         this.carReg = carReg;
     }
 
-
 }

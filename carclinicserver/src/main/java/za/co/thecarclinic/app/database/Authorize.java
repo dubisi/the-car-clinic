@@ -18,13 +18,14 @@ public class Authorize {
 
             ResultSet results = stmt.getResultSet();
 
-           if (results.next()) {
-               if (results.getString("email").equals(auth.getUser()) && results.getString("password").equals(auth.getPassword())) {
-                   return true;
-               } else {
-                   return false;
-               }
-           }
+            if (results.next()) {
+                if (results.getString("email").equals(auth.getUser())
+                        && results.getString("password").equals(auth.getPassword())) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();

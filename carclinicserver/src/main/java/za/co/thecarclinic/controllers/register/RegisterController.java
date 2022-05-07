@@ -17,8 +17,11 @@ public class RegisterController {
         if (add.validate(register)) {
             context.status(HttpCode.FOUND);
         } else {
-            add.signUp(register);
-            context.status(HttpCode.CREATED);
+            if (add.signUp(register)) {
+                context.status(HttpCode.CREATED);
+            } else {
+                context.status(HttpCode.BAD_REQUEST);
+            }
         }
 
     }

@@ -1,7 +1,7 @@
 package za.co.thecarclinic.controllers.request;
 
 import io.javalin.http.Context;
-
+import io.javalin.http.HttpCode;
 import za.co.thecarclinic.app.database.CRUD;
 import za.co.thecarclinic.app.database.Persist;
 import za.co.thecarclinic.app.modal.bookings.Booking;
@@ -15,7 +15,12 @@ public class BookingController {
         Booking booking = context.bodyAsClass(Booking.class);
         crud = new Persist();
 
-        crud.book(booking);
+        if (crud.book(booking)) {
+            context.status(HttpCode.CREATED);
+        } else {
+            context.status(HttpCode.BAD_REQUEST);
+        }
+        ;
     }
 
     public static void getBookings(Context context) {

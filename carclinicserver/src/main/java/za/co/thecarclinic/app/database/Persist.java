@@ -21,7 +21,7 @@ public class Persist implements CRUD {
     DBConection dbConection = new DBConection();
 
     @Override
-    public void signUp(Register register) {
+    public boolean signUp(Register register) {
 
         String prepState = "INSERT INTO customers(name,surname,number,email,location," +
                 "password) values(?,?,?,?,?,?)";
@@ -34,10 +34,12 @@ public class Persist implements CRUD {
             statement.setString(6, register.getPassword());
             int result = statement.executeUpdate();
             System.out.println(result);
+            return result == 1 ? true : false;
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return false;
 
     }
 
@@ -80,7 +82,7 @@ public class Persist implements CRUD {
     }
 
     @Override
-    public void requestSrv(RequestService requestService) {
+    public boolean requestSrv(RequestService requestService) {
 
         String requestSql = "SELECT carID FROM car WHERE carreg = ?";
         String carID = "";
@@ -94,6 +96,7 @@ public class Persist implements CRUD {
 
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
 
         System.out.println(carID);
@@ -106,14 +109,15 @@ public class Persist implements CRUD {
             int result = statement.executeUpdate();
             System.out.println(result);
 
+            return result == 1 ? true : false;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        return false;
     }
 
     @Override
-    public void book(Booking booking) {
+    public boolean book(Booking booking) {
 
         String customersIDSql = "SELECT customerID,name,surname,carID FROM " +
                 "customers,car WHERE email = ? AND carreg = ?";
@@ -136,6 +140,7 @@ public class Persist implements CRUD {
 
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
 
         String prepState = "INSERT INTO bookings('name','surname'," +
@@ -153,9 +158,13 @@ public class Persist implements CRUD {
             int result = statement1.executeUpdate();
             System.out.println(result);
 
+            return result == 1 ? true : false;
+
         } catch (SQLException e) {
             e.printStackTrace();
+
         }
+        return false;
     }
 
     @Override
@@ -207,6 +216,7 @@ public class Persist implements CRUD {
                 bookingRetrieve.setLocation(results.getString("location"));
                 bookingRetrieve.setDescription(results.getString("description"));
                 bookingRetrieve.setPrice(results.getString("price"));
+                bookingRetrieve.setDate(results.getString("date"));
                 bookingRetrieve.setStatus(results.getString("status"));
                 bookings.add(bookingRetrieve);
 

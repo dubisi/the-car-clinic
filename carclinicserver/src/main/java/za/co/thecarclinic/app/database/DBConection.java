@@ -9,7 +9,6 @@ public class DBConection {
     static Connection connection = null;
     String URL = "sqlite:test.db";
 
-
     public Connection getConnection() {
 
         try {

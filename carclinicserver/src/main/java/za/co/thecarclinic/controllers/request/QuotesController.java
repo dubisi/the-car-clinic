@@ -1,7 +1,7 @@
 package za.co.thecarclinic.controllers.request;
 
 import io.javalin.http.Context;
-
+import io.javalin.http.HttpCode;
 import za.co.thecarclinic.app.database.CRUD;
 import za.co.thecarclinic.app.database.Persist;
 import za.co.thecarclinic.app.modal.bookings.RequestService;
@@ -16,7 +16,11 @@ public class QuotesController {
 
         crud = new Persist();
 
-        crud.requestSrv(requestService);
+        if (crud.requestSrv(requestService)) {
+            context.status(HttpCode.CREATED);
+        } else {
+            context.status(HttpCode.BAD_REQUEST);
+        }
     }
 
     public static void getQuotes(Context context) {

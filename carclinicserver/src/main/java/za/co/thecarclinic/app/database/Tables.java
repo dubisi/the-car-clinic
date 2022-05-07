@@ -6,7 +6,7 @@ public interface Tables {
      * responsible to create customers table
      * if not exist
      * 
-     * @void
+     * @return void
      **/
     void createCustomersTable();
 
@@ -14,7 +14,7 @@ public interface Tables {
      * responsible to create car details table
      * for customers cars
      * 
-     * @void
+     * @return void
      **/
     void createCarTable();
 
@@ -22,7 +22,7 @@ public interface Tables {
      * responsible to create customers quotes request
      * table
      * 
-     * @void
+     * @return void
      **/
     void createQuotesTable();
 
@@ -30,7 +30,7 @@ public interface Tables {
      * responsible to create customers bookings
      * table
      * 
-     * @void
+     * @return void
      **/
     void createBookingTable();
 
@@ -38,7 +38,7 @@ public interface Tables {
      * responsible create admin table
      * for admin to manage request time to time
      * 
-     * @void
+     * @return void
      **/
     void createAdminTable();
 
@@ -46,7 +46,7 @@ public interface Tables {
      * responsible create dates table
      *
      *
-     * @void
+     * @return void
      **/
     void createAvailableDatesTable();
 }

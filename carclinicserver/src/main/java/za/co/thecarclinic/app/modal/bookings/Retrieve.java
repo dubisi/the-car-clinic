@@ -9,11 +9,20 @@ public class Retrieve {
     private String location;
     private String description;
     private String price;
+    private String date;
     private String details;
     private String status;
 
     public String getName() {
         return name;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public void setName(String name) {

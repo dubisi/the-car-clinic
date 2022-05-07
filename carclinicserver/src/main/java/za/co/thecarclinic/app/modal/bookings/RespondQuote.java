@@ -1,7 +1,7 @@
 package za.co.thecarclinic.app.modal.bookings;
 
 public class RespondQuote {
-    
+
     private String carReg;
     private String status;
     private String price;

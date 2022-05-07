@@ -4,7 +4,7 @@ public class RequestService {
 
     private String carReg;
     private String description;
- 
+
     public String getCarReg() {
         return carReg;
     }
